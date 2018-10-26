@@ -1,0 +1,16 @@
+create table user_master (UserId VARCHAR2(6) primary key, UserName VARCHAR2(15), UserPassword VARCHAR2(50), UserType VARCHAR2(10));
+
+create table department(Dept_ID number primary key, Dept_Name VARCHAR2(50) );
+
+create table employee(Empno Number(6) primary key,
+Ename Varchar2(25), 
+job Varchar2(50),
+mgr number(4), 
+hiredate date,
+Dept_ID number references department(dept_id));
+
+create table asset(AssetId Number primary key, AssetName Varchar2(25), AssetDes Varchar2(25), Quantity Number, Status Varchar2(15));
+
+create table assetallocation(AllocationId Number primary key, AssetId Number references asset(assetId), Empno Number references employee(empno), Allocation_date Date, Release_date Date)
+
+create table request (requestId number primary key, assetName varchar(30), quantity number, status varchar2(30), openDate date, closeDate date )
